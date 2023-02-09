@@ -10,6 +10,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { EmployeeService } from './services/employee.service';
+import { EmployeeResolverService } from './services/employee-list-resolver.service';
 
 @NgModule({
   declarations: [
@@ -26,9 +29,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       maxAge: 25, 
       logOnly:  !isDevMode() // environment.production
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [EmployeeService, EmployeeResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
