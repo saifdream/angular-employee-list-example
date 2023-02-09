@@ -1,4 +1,10 @@
 # Employee
+In angular-cli version 12.x.x
+To avoid err_ossl_evp_unsupported error use windows env -> set NODE_OPTIONS=--openssl-legacy-provider
+And for mac use export NODE_OPTIONS=--openssl-legacy-provider in start scripts section in package.json
+
+For mac "start": "export NODE_OPTIONS=--openssl-legacy-provider && ng serve -o",
+For windows "start": "set NODE_OPTIONS=--openssl-legacy-provider && ng serve -o",
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.18.
 
