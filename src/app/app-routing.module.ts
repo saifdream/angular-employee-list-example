@@ -1,16 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationComponent } from './authentication/authentication.component';
-import { EmployeeListComponent } from './employee-list/employee-list.component'; 
-import { EmployeeResolverService } from './services/employee-list-resolver.service';
 
 const routes: Routes = [
-  { path: 'auth', component: AuthenticationComponent },
-  { 
-    path: 'employee-list', 
-    component: EmployeeListComponent,
-    resolve: { employeeList: EmployeeResolverService }
-  },
+  { path: 'employees', loadChildren:()=> import('./employees/employees.module').then(m => m.EmployeesModule)},
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
 ];
 
 @NgModule({

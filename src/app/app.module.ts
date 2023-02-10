@@ -11,28 +11,28 @@ import { environment } from '../environments/environment';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { EmployeeService } from './services/employee.service';
-import { EmployeeResolverService } from './services/employee-list-resolver.service';
+import { authenticationReducer } from './state/auth/auth.reducer';
+import { employeeReducer } from './state/employee-list/employee-list.reducer';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthenticationComponent,
-    EmployeeListComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
+    HttpClientModule,
+    MaterialModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({auth: authenticationReducer, employees: employeeReducer}, {}),
     StoreDevtoolsModule.instrument({ 
       maxAge: 25, 
       logOnly:  !isDevMode() // environment.production
     }),
-    BrowserAnimationsModule,
-    HttpClientModule
   ],
-  providers: [EmployeeService, EmployeeResolverService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

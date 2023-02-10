@@ -8,5 +8,5 @@ export const addEmployee = createAction(
 
 export const retrivedEmployeeList = createAction(
     '[Employee List/API] Retrive Employee Success',
-    props<{employeeList: ReadonlyArray<Employee>}>()
+    props<{employees: ReadonlyArray<Employee>}>()
 );
