@@ -15,7 +15,7 @@ import { selectEmployees } from '../state/employee-list/employee-list.selectors'
 export class EmployeeListComponent implements OnInit {
   title="Employee List";
 
-  displayedColumns: string[] = ['firstName', 'lastName', 'phone', 'gender', 'skillName', 'skillLevel', 'experience'];
+  displayedColumns: string[] = ['sl', 'firstName', 'lastName', 'phone', 'gender', 'dob', 'skillName', 'skillLevel', 'experience'];
   dataSource: Employee[] = [];
   
   employees$ = this.store.pipe(select(selectEmployees));

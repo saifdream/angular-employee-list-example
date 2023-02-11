@@ -17,7 +17,16 @@ import { addEmployee } from '../state/employee-list/employee-list.actions';
   }]
 })
 export class NewEmployeeComponent implements OnInit {
-  employee: object = {};
+  employee: any = {
+    firstName: "", 
+    lastName: "", 
+    phone: '', 
+    gender: "", 
+    dob: '', 
+    skillName: "", 
+    skillLevel: "", 
+    experiemce: ""
+  };
   employeeForm$ = this.store.pipe(select(selectEmployeeForm));
   maxDate: Date = new Date();
   firstFormGroup!: FormGroup;
@@ -47,18 +56,18 @@ export class NewEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.init();
-    this.store.dispatch(addEmployee({
-      employee: {
-        firstName: 'Abc',
-        lastName: '',
-        dob: new Date(),
-        gender: 'M',
-        phone: 556,
-        skillName: '',
-        skillLevel: '',
-        experiemce: ''
-      }
-    }));
+    // this.store.dispatch(addEmployee({
+    //   employee: {
+    //     firstName: 'Abc',
+    //     lastName: '',
+    //     dob: new Date(),
+    //     gender: 'M',
+    //     phone: 556,
+    //     skillName: '',
+    //     skillLevel: '',
+    //     experiemce: ''
+    //   }
+    // }));
   }
 
   submitPersonalInfo(): void {
@@ -82,12 +91,11 @@ export class NewEmployeeComponent implements OnInit {
   }
 
   addEmployee(employee: Employee): void {
-    this.store.dispatch(addEmployee({
-      employee
-    }));
+    this.store.dispatch(addEmployee({employee}));
+  }
 
+  ngOnDestroy() {
     this.store.dispatch(resetEmployeeData({}));
-
     this.firstFormGroup.reset();
     this.secondFormGroup.reset();
   }

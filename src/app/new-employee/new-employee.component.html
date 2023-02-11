@@ -79,7 +79,19 @@
         </mat-step>
         <mat-step>
           <ng-template matStepLabel>Done</ng-template>
-          <p>You are now done.</p>
+          <h2>Basic Information</h2>
+          <mat-divider></mat-divider>
+          <p><strong>First Name:</strong> {{employee.firstName}}</p>
+          <p><strong>Last Name:</strong> {{employee.lastName}}</p>
+          <p><strong>Phone:</strong> {{employee.phone}}</p>
+          <p><strong>DOB:</strong> {{employee.dob | date: 'dd/MM/yyyy'}}</p>
+          <p><strong>Gender:</strong> {{employee.gender}}</p>
+
+          <h2>Skill Information</h2>
+          <mat-divider></mat-divider>
+          <p><strong>Skill Name:</strong> {{employee.skillName}}</p>
+          <p><strong>Skill Label:</strong> {{employee.skillLevel}}</p>
+          <p><strong>experience:</strong> {{employee.experience}}</p>
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button (click)="done();stepper.reset()">Save</button>
@@ -89,5 +101,10 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true">Save</button>
+  <button 
+    mat-button 
+    [mat-dialog-close]="true" 
+    [disabled]="!firstFormGroup.valid || !secondFormGroup.valid" 
+    (click)="done()"
+  >Save</button>
 </mat-dialog-actions>
