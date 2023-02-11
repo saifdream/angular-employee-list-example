@@ -1,9 +1,9 @@
 <h2 mat-dialog-title>New Employee</h2>
 <mat-dialog-content class="mat-typography">
     <mat-stepper [linear]="true" #stepper>
-        <mat-step [stepControl]="firstFormGroup" errorMessage="Personal information is required">
+        <mat-step [stepControl]="firstFormGroup" errorMessage="Basic information is required">
           <form [formGroup]="firstFormGroup" (ngSubmit)="submitPersonalInfo()">
-            <ng-template matStepLabel>Fill out your personal info</ng-template>
+            <ng-template matStepLabel>Fill out basic info</ng-template>
             <mat-form-field appearance="outline">
               <mat-label>First Name</mat-label>
               <input matInput placeholder="First Name" formControlName="firstName" required>
@@ -42,7 +42,7 @@
             </div>
           </form>
         </mat-step>
-        <mat-step [stepControl]="secondFormGroup" label="Fill out your skill info" errorMessage="Skill information is required">
+        <mat-step [stepControl]="secondFormGroup" label="Fill out skill info" errorMessage="Skill information is required">
           <form [formGroup]="secondFormGroup" (ngSubmit)="submitSkillInfo()">
             <mat-form-field appearance="outline">
               <mat-label>Skill Name</mat-label>
@@ -92,9 +92,9 @@
           <p><strong>Skill Name:</strong> {{employee.skillName}}</p>
           <p><strong>Skill Label:</strong> {{employee.skillLevel}}</p>
           <p><strong>experience:</strong> {{employee.experience}}</p>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="done();stepper.reset()">Save</button>
+          <div style="padding-top: 5px;">
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button (click)="done();stepper.reset()">Save</button>
           </div>
         </mat-step>
     </mat-stepper>

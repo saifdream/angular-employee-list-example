@@ -44,7 +44,7 @@ export class NewEmployeeComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: [''],
       dob: [null, Validators.required],
-      phone: [null, [Validators.required, Validators.pattern(/^(?=.*\d).{11,}$/)]],
+      phone: [null, [Validators.required, Validators.pattern(/^(?=.*\d).{11,11}$/)]],
       gender: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({

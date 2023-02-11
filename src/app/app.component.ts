@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
     });
 
     this.auth$.subscribe(auth => {
-      console.log(auth); 
+      // console.log(auth); 
       if(auth.isLoggedin) this.isLoggedin = auth.isLoggedin;
     });
   }

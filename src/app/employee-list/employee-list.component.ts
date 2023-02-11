@@ -25,15 +25,10 @@ export class EmployeeListComponent implements OnInit {
     private store: Store<AppState>,
     public dialog: MatDialog
   ) {
-    // this.state = store.select('employees')
     this.employees$.subscribe(employees => this.dataSource = employees);
     // store.select<Array<Employee>>(selectEmployees).subscribe((employees: Employee[]) => {
-    //   this.employees$=employees; 
     //   console.log(employees)
     // })
-
-    // const currentYear = new Date().getFullYear();
-    // this.maxDate = new Date();
   }
 
   ngOnInit(): void {
