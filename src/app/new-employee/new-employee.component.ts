@@ -72,21 +72,17 @@ export class NewEmployeeComponent implements OnInit {
 
   submitPersonalInfo(): void {
     if (this.firstFormGroup.valid) {
-      // console.log(this.firstFormGroup.value);
       this.store.dispatch(storeEmployeeData({data: this.firstFormGroup.value}));
     }
   }
 
   submitSkillInfo(): void {
     if (this.secondFormGroup.valid) {
-      // console.log(this.secondFormGroup.value);
       this.store.dispatch(storeEmployeeData({data: this.secondFormGroup.value}));
     }
   }
 
   done(): void {
-    console.log("Done")
-    console.log({...this.firstFormGroup.value, ...this.secondFormGroup.value})
     this.addEmployee({...this.firstFormGroup.value, ...this.secondFormGroup.value})
   }
 
