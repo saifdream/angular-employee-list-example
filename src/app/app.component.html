@@ -1,7 +1,9 @@
-<p>
-    <mat-toolbar color="primary">
-      <span>{{title}}</span>
-    </mat-toolbar>
-</p>
+<mat-toolbar color="primary">
+  <span>{{title}}</span>
+  <span class="spacer"></span>
+  <button *ngIf="isLoggedin" type="button" mat-button (click)="logout()">
+    Logout
+  </button>
+</mat-toolbar>
 <h4 *ngIf="isLoading">Loading ...</h4>
 <router-outlet></router-outlet>

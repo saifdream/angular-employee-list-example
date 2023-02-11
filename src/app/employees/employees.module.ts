@@ -5,15 +5,18 @@ import { EmployeesRoutingModule } from './employees-routing.module';
 import { EmployeeService } from '../services/employee.service';
 import { EmployeeResolverService } from '../services/employee-list-resolver.service';
 import { EmployeeListComponent } from '../employee-list/employee-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../material.module';
 
 
 @NgModule({
   declarations: [
-    // EmployeesComponent
     EmployeeListComponent
   ],
   imports: [
     CommonModule,
+    MaterialModule,
+    ReactiveFormsModule,
     EmployeesRoutingModule
   ],
   providers: [EmployeeService, EmployeeResolverService],

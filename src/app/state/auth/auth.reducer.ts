@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { login } from "./auth.actions";
+import { login, logout } from "./auth.actions";
 
 export const initialState: Readonly<any> = {
     isLoggedin: false,
@@ -9,5 +9,6 @@ export const initialState: Readonly<any> = {
 
 export const authenticationReducer = createReducer(
     initialState,
-    on(login, (state, {user}) => ({isLoggedin: true, ...user}))
+    on(login, (state, {user}) => ({isLoggedin: true, ...user})),
+    on(logout, (state, action) => ({isLoggedin: false, username: null, password: null})),
 );

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Employee } from '../model/employee.model';
@@ -13,12 +14,13 @@ import { selectEmployees } from '../state/employee-list/employee-list.selectors'
 })
 export class EmployeeListComponent implements OnInit {
   title="Employee List";
+  email = new FormControl('', [Validators.required, Validators.email]);
   
   employees$ = this.store.pipe(select(selectEmployees));
    
   constructor(private activeRoute: ActivatedRoute, private store: Store<AppState>) {
     // this.state = store.select('employees')
-    this.employees$.subscribe(employees => console.log(employees))
+    this.employees$.subscribe(employees => console.log(employees));
     // store.select<Array<Employee>>(selectEmployees).subscribe((employees: Employee[]) => {
     //   this.employees$=employees; 
     //   console.log(employees)
@@ -52,5 +54,13 @@ export class EmployeeListComponent implements OnInit {
     this.store.dispatch(addEmployee({
       employee
     }));
+  }
+
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 }

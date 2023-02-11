@@ -1,5 +1,5 @@
 import { isDevMode, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,7 @@ import { MaterialModule } from './material.module';
     FormsModule,
     HttpClientModule,
     MaterialModule,
+    // ReactiveFormsModule,
     AppRoutingModule,
     StoreModule.forRoot({auth: authenticationReducer, employees: employeeReducer}, {}),
     StoreDevtoolsModule.instrument({ 
