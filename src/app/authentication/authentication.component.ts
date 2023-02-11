@@ -32,14 +32,18 @@ export class AuthenticationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openSnackBar(message: string, action: string) {
+  ngOnDestroy() {
+    this.form.reset();
+  }
+
+  openSnackBar(message: string, action: string): void {
     this._snackBar.open(message, action);
   }
 
-  submit() {
-    console.log(this.form.valid)
+  submit(): void {
+    // console.log(this.form.valid)
     if (this.form.valid) {
-      console.log(this.form.value);
+      // console.log(this.form.value);
       this.store.dispatch(login({user: this.form.value}));
       localStorage.setItem("auth", JSON.stringify(this.form.value));
       this.openSnackBar("Login successfully", "Close");

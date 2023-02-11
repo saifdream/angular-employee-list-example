@@ -4,6 +4,7 @@ export interface Employee {
     dob: Date,
     gender: string,
     phone: number,
-    skill: string,
-    skillLevel: string
+    skillName: string,
+    skillLevel: string,
+    experiemce: string
 }

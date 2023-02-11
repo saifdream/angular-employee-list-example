@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
 import { Observable, of } from "rxjs";
 import { EmployeeService } from "./employee.service";
-import { catchError } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -10,11 +10,17 @@ import { catchError } from 'rxjs/operators';
 export class EmployeeResolverService implements Resolve<any> {
     constructor(private employee: EmployeeService) {}
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
+    resolve(
+        route: ActivatedRouteSnapshot, 
+        state: RouterStateSnapshot
+    ): Observable<any> {
         console.log('Called Get Employee in resolver ...', route);
-        return this.employee.getEmployeeList().pipe(
+        return this.employee.getEmployeeList()
+        .pipe(
+            // retry(2),
             catchError(error => {
-                return of('No Results')
+                console.log("error", error)
+                return of(error.message)
             })
         )
     }

@@ -7,11 +7,13 @@ import { EmployeeResolverService } from '../services/employee-list-resolver.serv
 import { EmployeeListComponent } from '../employee-list/employee-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
+import { NewEmployeeComponent } from '../new-employee/new-employee.component';
 
 
 @NgModule({
   declarations: [
-    EmployeeListComponent
+    EmployeeListComponent,
+    NewEmployeeComponent
   ],
   imports: [
     CommonModule,

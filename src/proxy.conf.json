@@ -1,0 +1,11 @@
+{
+    "/api/v1/*": {
+        "target": "https://dummy.restapiexample.com/",
+        "secure": false,
+        "pathRewrite": {
+            "^/api": ""
+        },
+        "changeOrigin": false,
+        "logLevel": "debug"
+    }
+}

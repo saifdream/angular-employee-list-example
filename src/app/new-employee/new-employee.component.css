@@ -1,0 +1,16 @@
+
+.form {
+    display: inline-table;
+    justify-content: center;
+    padding: 0 25%;
+}
+
+.mat-stepper-horizontal {
+    margin-top: 8px;
+}
+
+.mat-form-field {
+    width: 100%;
+    min-width: 300px;
+    margin-top: 5px;
+}

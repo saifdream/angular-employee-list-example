@@ -44,11 +44,13 @@ export class AppComponent implements OnInit {
     if(auth) {
       this.store.dispatch(login({user: JSON.parse(auth)}));
       this.router.navigate(["/employees"]);
+    } else {
+      this.router.navigate(["/"]);
     }
   }
 
   logout() {
-    console.log("logout")
+    // console.log("logout")
     localStorage.removeItem("auth");
     this.store.dispatch(logout({}));
     this.isLoggedin = false;
